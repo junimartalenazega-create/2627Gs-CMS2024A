@@ -1,3 +1,7 @@
+Nama  : Nurani Anisa Putri
+NIM   : 240631100001
+Kelas : 5A
+
 Ninis — Ruang Cerita Ninis
 
 Deskripsi
