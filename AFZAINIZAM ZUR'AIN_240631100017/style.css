@@ -1,0 +1,452 @@
+/*
+Theme Name: Tema Saya
+Theme URI: https://example.com/tema-saya
+Author: Nama Anda
+Author URI: https://example.com
+Description: Tema WordPress sederhana, responsif, dan ringan untuk blog atau situs pribadi.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tema-saya
+Tags: blog, one-column, custom-menu, featured-images, translation-ready
+*/
+
+/* ==========================================================================
+   Reset & Dasar
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1f2937;
+    background-color: #f9fafb;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+    color: #111827;
+}
+
+p {
+    margin: 0 0 1.25rem;
+}
+
+blockquote {
+    margin: 1.5rem 0;
+    padding: 0.5rem 1.25rem;
+    border-left: 4px solid #2563eb;
+    background: #eff6ff;
+    color: #374151;
+}
+
+pre, code {
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    background: #f3f4f6;
+    border-radius: 4px;
+}
+
+code { padding: 0.15rem 0.35rem; }
+pre  { padding: 1rem; overflow-x: auto; }
+
+/* ==========================================================================
+   Aksesibilitas
+   ========================================================================== */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.skip-link:focus {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    width: auto;
+    background: #fff;
+    padding: 0.75rem 1rem;
+    z-index: 100000;
+    top: 5px;
+    left: 5px;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.site-content {
+    padding: 2.5rem 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 900px) {
+    .content-grid.has-sidebar {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.site-title a {
+    color: #111827;
+}
+
+.site-title a:hover {
+    text-decoration: none;
+    color: #2563eb;
+}
+
+.site-description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Navigasi */
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.main-navigation a {
+    color: #374151;
+    font-weight: 500;
+    padding: 0.25rem 0;
+}
+
+.main-navigation a:hover,
+.main-navigation .current-menu-item > a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+    .menu-toggle { display: inline-block; }
+
+    .main-navigation { width: 100%; }
+
+    .main-navigation ul {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    .main-navigation.toggled ul { display: flex; }
+}
+
+/* ==========================================================================
+   Post & Halaman
+   ========================================================================== */
+.post-card,
+.entry {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.post-thumbnail {
+    margin: -1.5rem -1.5rem 1.25rem;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.entry-title {
+    font-size: 1.75rem;
+}
+
+.entry-title a {
+    color: #111827;
+}
+
+.entry-title a:hover {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.entry-meta {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.entry-meta span + span::before {
+    content: "•";
+    margin: 0 0.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    background: #1d4ed8;
+    color: #fff;
+    text-decoration: none;
+}
+
+.entry-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Konten WordPress */
+.alignleft  { float: left;  margin: 0 1.5rem 1rem 0; }
+.alignright { float: right; margin: 0 0 1rem 1.5rem; }
+.aligncenter { display: block; margin: 0 auto 1rem; }
+
+.wp-caption { max-width: 100%; }
+.wp-caption-text,
+.gallery-caption {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+}
+
+.sticky .entry-title::before {
+    content: "📌 ";
+}
+
+/* ==========================================================================
+   Paginasi
+   ========================================================================== */
+.pagination,
+.post-navigation {
+    margin: 2rem 0;
+}
+
+.pagination .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.pagination .page-numbers {
+    padding: 0.45rem 0.9rem;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    color: #374151;
+}
+
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Sidebar & Widget
+   ========================================================================== */
+.widget {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 2px solid #2563eb;
+}
+
+.widget ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.widget li {
+    padding: 0.35rem 0;
+    border-bottom: 1px dashed #e5e7eb;
+}
+
+.widget li:last-child { border-bottom: 0; }
+
+/* ==========================================================================
+   Form & Komentar
+   ========================================================================== */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+button,
+input[type="submit"] {
+    padding: 0.6rem 1.2rem;
+    background: #2563eb;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 500;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+.comments-area {
+    margin-top: 2rem;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-list .children {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.comment-body {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-meta {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background: #111827;
+    color: #d1d5db;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: #93c5fd;
+}
